@@ -1,10 +1,12 @@
 import express from 'express';
-import { routes } from '../Routes/routes.js';
+import { routes } from '../routes/routes.js';
+import { connect } from '../database/conexion.js';
 
 export class Server{
 
     constructor(){
         this.app = express();
+        this.connectServer();
         this.callHelpers();
         this.routeServices();
     }
@@ -20,7 +22,7 @@ export class Server{
     }
 
     connectServer(){
-
+        connect()
     }
 
     callHelpers(){
