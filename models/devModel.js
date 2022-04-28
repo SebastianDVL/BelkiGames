@@ -6,7 +6,7 @@ import mongoose from 'mongoose';
     correo:{type:String, required:true},
     telefono:{type:String, required:true},
     ubicacion:{type:String, required:true},
-    activo:{type:boolean, required:true}
+    activo:{type:Boolean, required:true,default:true}
      
  })
 

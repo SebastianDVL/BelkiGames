@@ -1,38 +1,91 @@
-
+import { ServiceDev } from "../services/ServiceDev.js"
 
 export class ControllerDev{
     constructor(){}
 
-    getAll(req, res){
+    async getAll(req, res){
+        let serviceDev = new ServiceDev();
+        try{
+            res.status(200).json({
+                message: "Exito al encontrar desarrolladoras",
+                data:await serviceDev.getAll(),
+                success: true
+            })
+        }catch(e){
+            res.status(400).json({
+                message: "Fallo al buscar informacion",
+                data:null,
+                success: false
+            })
+        }
         
-        res.status(200).json({
-            message: "Exito al encontrar desarrolladoras",
-            data:{},
-            success: true
-        })
     }
 
-    getByNit(req, res){
+    async getByNit(req, res){
+        let serviceDev = new ServiceDev();
         let nit = req.params.nit
 
-        res.status(200).json({
-            message: "Exito al encontrar desarrolladora",
-            data:{nit:nit},
-            success: true
-        })
+        try{
+            res.status(200).json({
+                message: "Exito al encontrar desarrolladora",
+                data:await serviceDev.getById(nit),
+                success: true
+            })
+        }catch(e){
+            res.status(400).json({
+                message: "Fallo al buscar informacion",
+                data:null,
+                success: false
+            })
+        }
     }
 
-    insert(req, res){
+    async insert(req, res){
+        let serviceDev = new ServiceDev();
+        let dataReq = req.body
 
+        try{
+
+            await serviceDev.insert(dataReq)
+            res.status(200).json({
+                message: "Exito al ingresar datos",
+                data:[],
+                success: true
+            })
+        }catch(e){
+            res.status(400).json({
+                message: "Fallo al ingresar datos",
+                data:null,
+                success: false
+            })
+        }
     }
 
     disableDevByNit(req, res){
         let nit = req.params.nit
     }
 
-    modifyDevByNit(req, res){
+    async modifyDevByNit(req, res){
+        let serviceDev = new ServiceDev();
         let nit = req.params.nit
+        let dataReq = req.body
         
+        try{
+
+            await serviceDev.edit(nit,dataReq)
+            res.status(200).json({
+                message: "Exito al modificar informacion",
+                data:[],
+                success: true
+            })
+            
+        }catch(e){
+            res.status(400).json({
+                message: "Fallo al modificar informacion",
+                data:null,
+                success:false
+            })
+        }
     }
 
 
