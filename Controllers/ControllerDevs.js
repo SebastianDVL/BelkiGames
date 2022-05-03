@@ -13,7 +13,7 @@ export class ControllerDev{
             })
         }catch(e){
             res.status(400).json({
-                message: "Fallo al buscar informacion",
+                message: "Fallo al buscar informacion: " + e,
                 data:null,
                 success: false
             })
@@ -21,19 +21,19 @@ export class ControllerDev{
         
     }
 
-    async getByNit(req, res){
+    async getById(req, res){
         let serviceDev = new ServiceDev();
-        let nit = req.params.nit
+        let id = req.params.id
 
         try{
             res.status(200).json({
                 message: "Exito al encontrar desarrolladora",
-                data:await serviceDev.getById(nit),
+                data:await serviceDev.getById(id),
                 success: true
             })
         }catch(e){
             res.status(400).json({
-                message: "Fallo al buscar informacion",
+                message: "Fallo al buscar informacion: " + e,
                 data:null,
                 success: false
             })
@@ -54,25 +54,43 @@ export class ControllerDev{
             })
         }catch(e){
             res.status(400).json({
-                message: "Fallo al ingresar datos",
+                message: "Fallo al ingresar datos: " + e,
                 data:null,
                 success: false
             })
         }
     }
 
-    disableDevByNit(req, res){
-        let nit = req.params.nit
+    async deleteDevById(req, res){
+        let serviceDev = new ServiceDev();
+        let id = req.params.id
+
+        try{
+
+            await serviceDev.delete(id)
+            res.status(200).json({
+                message: "Exito al borrar desarrolladora",
+                data:[],
+                success: true
+            })
+        }catch(e){
+            res.status(400).json({
+                message: "Fallo al borrar desarrolladora: " + e,
+                data:null,
+                success: false
+            })
+        }
+
     }
 
-    async modifyDevByNit(req, res){
+    async modifyDevById(req, res){
         let serviceDev = new ServiceDev();
-        let nit = req.params.nit
+        let id = req.params.id
         let dataReq = req.body
         
         try{
 
-            await serviceDev.edit(nit,dataReq)
+            await serviceDev.edit(id,dataReq)
             res.status(200).json({
                 message: "Exito al modificar informacion",
                 data:[],
@@ -81,7 +99,7 @@ export class ControllerDev{
             
         }catch(e){
             res.status(400).json({
-                message: "Fallo al modificar informacion",
+                message: "Fallo al modificar informacion: " + e,
                 data:null,
                 success:false
             })

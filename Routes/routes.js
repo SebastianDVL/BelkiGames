@@ -14,11 +14,10 @@ export let routes = express.Router();
 
 //rutas para desarrolladoras
 routes.get('/api/v1/devs/',controllerDev.getAll)
-routes.get('/api/v1/dev/:nit/',controllerDev.getByNit)
+routes.get('/api/v1/dev/:id/',controllerDev.getById)
 routes.post('/api/v1/dev/',controllerDev.insert)
-routes.put('/api/v1/dev/:nit',controllerDev.modifyDevByNit)
-routes.put('/api/v1/dev/:nit',controllerDev.disableDevByNit)
-
+routes.put('/api/v1/dev/:id',controllerDev.modifyDevById)
+routes.delete('/api/v1/dev/:id',controllerDev.deleteDevById)
 //rutas para videojuegos
 routes.get('/api/v1/games/',controllerGame.getAll)
 routes.get('/api/v1/game/:id/',controllerGame.getGameById)

@@ -1,6 +1,7 @@
 import express from 'express';
 import { routes } from '../routes/routes.js';
 import { connect } from '../database/conexion.js';
+import cors from 'cors';
 
 export class Server{
 
@@ -26,6 +27,7 @@ export class Server{
     }
 
     callHelpers(){
+        this.app.use(cors())
         this.app.use(express.json())
     }
 
