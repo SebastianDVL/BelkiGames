@@ -18,6 +18,7 @@ routes.get('/api/v1/dev/:id/',controllerDev.getById)
 routes.post('/api/v1/dev/',controllerDev.insert)
 routes.put('/api/v1/dev/:id',controllerDev.modifyDevById)
 routes.delete('/api/v1/dev/:id',controllerDev.deleteDevById)
+
 //rutas para videojuegos
 routes.get('/api/v1/games/',controllerGame.getAll)
 routes.get('/api/v1/game/:id/',controllerGame.getGameById)
