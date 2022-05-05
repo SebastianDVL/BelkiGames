@@ -30,14 +30,13 @@ export class ControllerUser{
         let password = req.params.password
   
         try{
-                
+            
             res.status(200).json({
                 message: "Exito al encontrar usuario",
                 data:await serviceUser.log(email),
                 success: true
             })
-        
-            
+             
         }catch(e){
             res.status(400).json({
                 message: "Fallo al ingresar: " + e,
