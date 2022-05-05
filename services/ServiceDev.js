@@ -28,4 +28,8 @@ export class ServiceDev {
         return await devModel.findByIdAndDelete(id)
     }
 
+    async getByName(name){
+        let dev = await devModel.find({nombre: name})
+        return dev
+    }
 }

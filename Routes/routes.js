@@ -26,6 +26,6 @@ routes.get('/api/v1/games/:category/',controllerGame.getGamesByCategory)
 
 
 //rutas para clientes/usuarios
-
-
+routes.get('/api/v1/user/:email&:password',controllerUser.login)
+routes.post('/api/v1/user/',controllerUser.insert)
 //rutas para facturas

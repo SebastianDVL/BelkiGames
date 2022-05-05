@@ -106,6 +106,26 @@ export class ControllerDev{
         }
     }
 
+    async getDevByName(req, res) {
+        let serviceDev = new ServiceDev();
+        let name = req.params.nombre 
+
+        try{
+            res.status(200).json({
+                message: "Exito al encontrar desarrolladora",
+                data: await serviceDev.getByName(name),
+                success: true
+            })
+            
+        }catch(e){
+            res.status(400).json({
+                message: "Fallo al encontrar desarrolladora: " + e,
+                data:null,
+                success:false
+            })
+        }
+    }
+
 
 
 }

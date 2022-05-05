@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const User = new mongoose.Schema({
-    correo:{type: String, required:true,index:{unique:true}},
+    correo:{type: String, required:true},
     nombre: {type: String, required:true},
     apellidos: {type: String, required:true},
     pais: {type: String, required:true},
