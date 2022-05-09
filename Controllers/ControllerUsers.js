@@ -26,21 +26,29 @@ export class ControllerUser{
 
     async login(req, res){
         let serviceUser = new ServiceUser();
-        let email = req.params.email
-        let password = req.params.password
-  
-        try{
-                
-            res.status(200).json({
-                message: "Exito al encontrar usuario",
-                data:await serviceUser.log(email),
-                success: true
-            })
+        let data = req.body
         
+        try{
+            let user = await serviceUser.log(data.email)
+         
+            if(user[0].contraseña != data.password){
+                res.status(200).json({
+                    message: "Contraseña incorrecta",
+                    data:[],
+                    success: false
+                })
+            }else{
+                res.status(200).json({
+                    message: "Exito al ingresar",
+                    data:user,
+                    success: true
+                })
+            }
             
+             
         }catch(e){
             res.status(400).json({
-                message: "Fallo al ingresar: " + e,
+                message: e,
                 data:null,
                 success: false
             })

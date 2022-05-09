@@ -11,4 +11,4 @@ const Game =new mongoose.Schema({
     nitDev:{type:String, required:true}
 })
 
-export const gameModel = mongoose.Model('juegos',Game)
+export const gameModel = mongoose.model('juegos',Game)

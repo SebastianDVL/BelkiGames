@@ -21,11 +21,14 @@ routes.delete('/api/v1/dev/:id',controllerDev.deleteDevById)
 
 //rutas para videojuegos
 routes.get('/api/v1/games/',controllerGame.getAll)
+routes.post('/api/v1/games/',controllerGame.insert)
+routes.put('/api/v1/game/:id',controllerGame.modify)
+routes.delete('/api/v1/game/:id',controllerGame.delete)
 routes.get('/api/v1/game/:id/',controllerGame.getGameById)
-routes.get('/api/v1/games/:category/',controllerGame.getGamesByCategory)
+routes.get('/api/v1/games/categoria=:category/',controllerGame.getGamesByCategory)
 
 
 //rutas para clientes/usuarios
-routes.get('/api/v1/user/:email&:password',controllerUser.login)
+routes.post('/api/v1/user/login',controllerUser.login)
 routes.post('/api/v1/user/',controllerUser.insert)
-//rutas para facturas
+//rutas para facturas   
