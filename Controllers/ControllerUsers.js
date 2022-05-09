@@ -26,7 +26,6 @@ export class ControllerUser{
 
     async login(req, res){
         let serviceUser = new ServiceUser();
-<<<<<<< HEAD
         let data = req.body
         
         try{
@@ -46,18 +45,6 @@ export class ControllerUser{
                 })
             }
             
-=======
-        let email = req.params.email
-        let password = req.params.password
-  
-        try{
-            
-            res.status(200).json({
-                message: "Exito al encontrar usuario",
-                data:await serviceUser.log(email),
-                success: true
-            })
->>>>>>> c6324467e6eec62d35b8f28c414423a6e363ea93
              
         }catch(e){
             res.status(400).json({
